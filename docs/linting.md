@@ -1,6 +1,6 @@
-## TSLint
+# TSLint
 
-# Add tslin
+## Add tslin
 
 Add dependencies to `package.json`
 
