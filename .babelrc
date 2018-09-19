@@ -6,11 +6,31 @@
         "@babel/typescript",
         "@babel/preset-react"
     ],
+
     "plugins": [
         "@babel/proposal-class-properties",
         "@babel/proposal-object-rest-spread",
-        "@babel/plugin-syntax-dynamic-import",
-        "babel-plugin-webpack-alias",
-        "react-hot-loader/babel"
-    ]
+        "@babel/plugin-syntax-dynamic-import"
+    ],
+
+    "env": {
+        "production": {
+            "plugins": [
+                ["babel-plugin-webpack-alias", {
+                    "config": "webpack.config.js",
+                    "findConfig": true
+                }]
+            ]
+        },
+
+        "development": {
+            "plugins": [
+                ["babel-plugin-webpack-alias", {
+                    "config": "webpack.config.dev.js",
+                    "findConfig": true
+                }],
+                "react-hot-loader/babel"
+            ]
+        }
+    }
 }
