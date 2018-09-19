@@ -1,6 +1,6 @@
 # React web app skeleton steps
 
-1.  [Initial (Babel Typescript)](http://)
+1.  [Initial (Babel Typescript)](/docs/initial.md)
 2.  [Basic React Webpack](http://)
 3.  [Build Webpack Config](http://)
 4.  [Environments](http://)
