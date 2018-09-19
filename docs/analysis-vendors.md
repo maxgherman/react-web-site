@@ -1,5 +1,7 @@
 # Vendors split, bundle analysis
 
+### [Back to root](/README.md)
+
 ## Add optimization section to Webpack
 
 Add optimization section to `webpack.config.ts`
@@ -52,7 +54,7 @@ devtool: 'source-map' as Options.Devtool
 devtool: 'cheap-module-eval-source-map' as Options.Devtool
 ```
 
-Add 
+Add
 ```json
 "analyse": "npm run build:config && cross-env NODE_ENV=analyse webpack && npm run analyse-bundle",
 ```

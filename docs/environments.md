@@ -1,5 +1,7 @@
 # Environments set up
 
+### [Back to root](/README.md)
+
 ## Cross OS  support
 
 Add `cross-env` dependency to `package.json`

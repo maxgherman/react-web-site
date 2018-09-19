@@ -1,5 +1,7 @@
 # TSLint
 
+### [Back to root](/README.md)
+
 ## Add tslin
 
 Add dependencies to `package.json`

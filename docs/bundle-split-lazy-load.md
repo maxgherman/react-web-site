@@ -1,5 +1,7 @@
 # Bundle split, Lazy load
 
+### [Back to root](/README.md)
+
 ## Production vendor split
 
 Change `optimization` section of production `webpack.config.ts` file:
@@ -69,7 +71,7 @@ const LoadableComponent = Loadable({
 });
 
 export class Page extends React.Component<{}, IPageState> {
-    
+
     constructor(props: {}) {
         super(props);
 

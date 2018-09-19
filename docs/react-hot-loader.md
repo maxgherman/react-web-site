@@ -1,5 +1,7 @@
 # React HOT Loader
 
+### [Back to root](/README.md)
+
 ## Add dependency
 
 Add `react-hot-loader` to `package.json`
@@ -18,7 +20,7 @@ Add entry into `.babelrc`
 
 ```json
 "plugins": [
-    ... 
+    ...
     "react-hot-loader/babel"
 ]
 ```

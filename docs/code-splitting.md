@@ -1,5 +1,7 @@
 # Code splitting
 
+### [Back to root](/README.md)
+
 ## Babel dependency
 
 Add `dynamic import` to `package.json`
@@ -16,7 +18,7 @@ Add `dynamic import` to `package.json`
 
 Create folder `page` under `app` folder
 
-Create `index.tsx` under `page` folder 
+Create `index.tsx` under `page` folder
 
 Create `counter.tsx` under `page` folder
 
@@ -33,11 +35,11 @@ Add `Page` component to `index.tsx`
 import React from 'react';
 
 interface IPageState {
-    view?: JSX.Element    
+    view?: JSX.Element
 }
 
 export class Page extends React.Component<{}, IPageState> {
-    
+
     constructor(props: {}) {
         super(props);
 
@@ -63,10 +65,10 @@ export class Page extends React.Component<{}, IPageState> {
     private addCounterView = (): void => {
         import('./counter')
             .then(module => {
-                
+
                 //@ts-ignore
                 const Component = module.default;
-                
+
                 this.setState({
                     view: <Component />
                 });
@@ -84,7 +86,7 @@ Add `Counter` component to `counter.tsx`
 import React from 'react';
 
 interface ICounterState {
-    count: number    
+    count: number
 }
 
 class Counter extends React.Component<{}, ICounterState> {
@@ -106,7 +108,7 @@ class Counter extends React.Component<{}, ICounterState> {
               <p>
                 <button onClick={this.increase}>+</button>&nbsp;&nbsp;&nbsp;
                 <button onClick={this.decrease}>-</button>
-              </p>  
+              </p>
             </>
         );
     }

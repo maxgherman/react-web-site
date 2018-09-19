@@ -1,5 +1,7 @@
 # Converting Webpack config to Typescript
 
+### [Back to root](/README.md)
+
 ## Add typescript dependencies
 
 ```json

@@ -1,5 +1,7 @@
 # Basic React Webpack
 
+### [Back to root](/README.md)
+
 ## Add React dependencies
 
 ``` json
@@ -142,7 +144,7 @@ Add webpack.config.js entry
         alias: {
             '@app': path.join(__dirname, 'src', 'app'),
         }
-    } 
+    }
 ```
 
 Add tsconfig.json entry
@@ -153,7 +155,7 @@ Add tsconfig.json entry
 "paths": {                                /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     "@app/*": ["./src/app/*"],
 }
-...  
+...
 ```
 
 ## Create bundle/dev tasks
