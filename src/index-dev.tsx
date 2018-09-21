@@ -1,4 +1,4 @@
-import { load } from './polyfills/load';
+import { load, getPresence } from './polyfills/load';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,7 +7,16 @@ load()
 .then(() => {
     require('react-hot-loader/patch');
 
-    const App = require('./app-dev').default;
+    const polyfillPresence = getPresence();
+
+    const App = polyfillPresence.length <= 0 ?
+        require('./app-dev').default :
+        () => (
+            <div>
+                Missing polifills for:<br/>
+                {polyfillPresence.map((item, index) => <> <br/> <span key={index}>{item}</span></>)}
+            </div>
+        );
 
     ReactDOM.render(<App />, document.getElementById('root'));
 });
