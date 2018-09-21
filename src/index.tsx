@@ -1,7 +1,11 @@
-import './polyfills';
+import { load } from './polyfills/load';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '@app/app';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+load()
+.then(() => {
+    const App = require('@app/app').default;
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+});
