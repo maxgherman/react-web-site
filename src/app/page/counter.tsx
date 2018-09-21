@@ -18,7 +18,7 @@ class Counter extends React.Component<{}, ICounterState> {
         return (
             <>
               <p>
-              Counter : {this.state.count}
+                Counter : {this.state.count}
               </p>
               <p>
                 <button onClick={this.increase}>+</button>&nbsp;&nbsp;&nbsp;

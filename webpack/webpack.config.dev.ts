@@ -26,7 +26,6 @@ const config: IConfig = {
 
     entry: {
         main: [
-            'react-hot-loader/patch',               // makes sure react-hot-loader is loaded first
             Paths.indexJs
         ]
     },
