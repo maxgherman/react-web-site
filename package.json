@@ -26,7 +26,8 @@
     "intl": "1.2.5",
     "es6-promise": "4.2.5",
     "url-polyfill": "1.1.0",
-    "whatwg-fetch": "3.0.0"
+    "whatwg-fetch": "3.0.0",
+    "ky": "0.3.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",

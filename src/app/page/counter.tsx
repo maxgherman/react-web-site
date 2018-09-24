@@ -1,7 +1,16 @@
 import React from 'react';
+import ky from 'ky';
+
+interface IDataPayload {
+    id: number
+    title: string
+    url: string
+    thumbnailUrl: string
+}
 
 interface ICounterState {
     count: number
+    data: IDataPayload[]
 }
 
 class Counter extends React.Component<{}, ICounterState> {
@@ -10,7 +19,8 @@ class Counter extends React.Component<{}, ICounterState> {
         super(props);
 
         this.state = {
-            count : 10
+            count : 10,
+            data: []
         };
     }
 
@@ -25,7 +35,28 @@ class Counter extends React.Component<{}, ICounterState> {
                 <button onClick={this.decrease}>-</button>&nbsp;&nbsp;&nbsp;
                 <button onClick={this.calcLongClick}>Calc long count</button>
               </p>
+              <div>
+                  <button onClick={this.loadData}>Load Data</button>
+                  {this.renderDataList()}
+              </div>
             </>
+        );
+    }
+
+    private renderDataList() {
+        return (
+            <ul>
+                {this.state.data.map(this.renderListItem)}
+            </ul>
+        );
+    }
+
+    private renderListItem(item: IDataPayload) {
+        return (
+            <li key={item.id}>
+                {item.title}<br/>
+                <img src={item.thumbnailUrl} />
+            </li>
         );
     }
 
@@ -52,6 +83,15 @@ class Counter extends React.Component<{}, ICounterState> {
 
         this.setState((prevState) => ({
             count: prevState.count + result
+        }));
+    }
+
+    private loadData = async () => {
+        const result = await ky.get('https://jsonplaceholder.typicode.com/photos')
+            .json() as IDataPayload[];
+
+        this.setState(() => ({
+            data: result.slice(0, 10)
         }));
     }
 }
