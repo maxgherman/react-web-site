@@ -1,7 +1,10 @@
 {
     "presets": [
         ["@babel/env", {
-            "modules": false
+            "modules": false,
+            "targets": {
+                "ie": "11"
+              }
         }],
         "@babel/typescript",
         "@babel/preset-react"
@@ -10,7 +13,11 @@
     "plugins": [
         "@babel/proposal-class-properties",
         "@babel/proposal-object-rest-spread",
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        ["@babel/plugin-transform-runtime", {
+            "corejs": false,
+            "regenerator": true
+        }]
     ],
 
     "env": {

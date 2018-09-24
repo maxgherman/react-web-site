@@ -22,7 +22,8 @@ class Counter extends React.Component<{}, ICounterState> {
               </p>
               <p>
                 <button onClick={this.increase}>+</button>&nbsp;&nbsp;&nbsp;
-                <button onClick={this.decrease}>-</button>
+                <button onClick={this.decrease}>-</button>&nbsp;&nbsp;&nbsp;
+                <button onClick={this.calcLongClick}>Calc long count</button>
               </p>
             </>
         );
@@ -37,6 +38,20 @@ class Counter extends React.Component<{}, ICounterState> {
     private decrease = () => {
         this.setState((prevState) => ({
             count: prevState.count - 1
+        }));
+    }
+
+    private calcLongClick = async () => {
+        const result = await new Promise<number>(
+            (resolve) => {
+                setTimeout(() => {
+                    resolve(this.state.count);
+                },
+                           500);
+            });
+
+        this.setState((prevState) => ({
+            count: prevState.count + result
         }));
     }
 }
