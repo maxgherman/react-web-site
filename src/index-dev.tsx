@@ -13,7 +13,7 @@ load()
         require('./app-dev').default :
         () => (
             <div>
-                Missing polifills for:<br/>
+                Missing polyfills for:<br/>
                 {polyfillPresence.map((item, index) => <> <br/> <span key={index}>{item}</span></>)}
             </div>
         );

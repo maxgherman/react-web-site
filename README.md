@@ -10,3 +10,4 @@
 8.  [Bundle Splitting, Lazy Load](/docs/bundle-split-lazy-load.md)
 9.  [Cache busting](/docs/cache-busting.md)
 10. [Linting](/docs/linting.md)
+11. [Polyfills](/docs/polyfills.md)

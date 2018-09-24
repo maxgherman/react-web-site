@@ -34,7 +34,6 @@ const Parts = {
         } as Options.Optimization,
 
         // add this to config for prod source maps
-        // remove react-hot-loader from .babelrc
         mapFileControlOption:
             new webpack.SourceMapDevToolPlugin({
                 filename: '[name].js.map',
