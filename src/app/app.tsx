@@ -1,3 +1,5 @@
+import './app.css';
+
 import React from 'react';
 import { idxf3 } from '@utils';
 import { Page } from './page/index';

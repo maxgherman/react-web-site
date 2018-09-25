@@ -51,7 +51,10 @@ const config: IConfig = {
             loader: 'babel-loader',
             options: {
                 cacheDirectory: true    // react-hot-loader needs this
-            }
+            },
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
         }],
     },
 

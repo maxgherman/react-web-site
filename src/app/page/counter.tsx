@@ -1,3 +1,5 @@
+import './counter.css';
+
 import React from 'react';
 import ky from 'ky';
 
@@ -26,8 +28,8 @@ class Counter extends React.Component<{}, ICounterState> {
 
     public render() {
         return (
-            <>
-              <p>
+            <div className="counter">
+              <p className="header">
                 Counter : {this.state.count}
               </p>
               <p>
@@ -39,7 +41,7 @@ class Counter extends React.Component<{}, ICounterState> {
                   <button onClick={this.loadData}>Load Data</button>
                   {this.renderDataList()}
               </div>
-            </>
+            </div>
         );
     }
 

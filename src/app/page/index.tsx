@@ -1,3 +1,5 @@
+import './page.css';
+
 import React from 'react';
 import Loadable from 'react-loadable';
 
@@ -26,8 +28,8 @@ export class Page extends React.Component<{}, IPageState> {
 
     public render() {
         return (
-            <div>
-                <p>
+            <div className="page">
+                <p className="header">
                     Click the button to load Counter from bundle !
                 </p>
                 <p>{this.state.test}</p>

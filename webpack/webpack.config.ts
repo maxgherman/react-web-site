@@ -3,6 +3,7 @@ import webpack, { Options } from 'webpack';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const aliases = require('./webpack/module-aliases').getAliases;
 
@@ -96,6 +97,9 @@ const config: webpack.Configuration = {
             options: {
                 cacheDirectory: true    // react-hot-loader needs this
             }
+        }, {
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader']
         }],
     },
 
@@ -103,6 +107,12 @@ const config: webpack.Configuration = {
         new webpack.EnvironmentPlugin(['NODE_ENV']),
 
         new webpack.HashedModuleIdsPlugin(),
+
+        new MiniCssExtractPlugin({
+            // both options are optional
+            filename: '[name].[contenthash:8].css',
+            chunkFilename: '[id].[contenthash:8].css',
+        }),
 
         new HtmlWebpackPlugin({
             filename: '../index.html',
