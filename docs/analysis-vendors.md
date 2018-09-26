@@ -47,6 +47,7 @@ Add dependency to `package.json`
 ```
 
 Set webpack `devtool` option to `source-map` for analysis env
+
 Set webpack `devtool` option to `cheap-module-eval-source-map` for development env
 
 ```ts

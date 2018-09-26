@@ -23,10 +23,6 @@ optimization: {
                     const packageName =
                         module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
 
-                    if(packageName === 'react-hot-loader') {
-                        return undefined;   // exclude react-hot-loader from bundling
-                    }
-
                     return `npm.${packageName.replace('@', '')}`;
                 }
             }
@@ -41,15 +37,15 @@ Add `react-loadable` to `package.json`
 
 ```json
 "dependencies": {
-    ...
+...
     "react-loadable": "5.5.0"
-    ...
-  },
-  "devDependencies": {
-  ...
-  "@types/react-loadable": "5.4.1"
-  ...
-  }
+...
+},
+"devDependencies": {
+...
+    "@types/react-loadable": "5.4.1"
+...
+}
 ```
 
 Change 'Page' component to use `react-loadable`

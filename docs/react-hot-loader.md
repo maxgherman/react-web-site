@@ -70,7 +70,7 @@ import App from '@app/app';
 
 Add `cacheDirectory` option to `babel-loader`
 
-```json
+```ts
 ...
 rules: [{
     // Include ts, tsx, and js files.

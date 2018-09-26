@@ -48,7 +48,7 @@ const config: IConfig = {
             // Include ts, tsx, and js files.
             test: /\.(tsx?)|(jsx?)$/,
             include: [
-                path.resolve(__dirname, 'src'),
+                Paths.source,
                 path.resolve(__dirname, 'node_modules/ky')
             ],
             loader: 'babel-loader',

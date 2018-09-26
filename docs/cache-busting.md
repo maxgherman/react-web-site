@@ -40,7 +40,7 @@ Add html webpack plugins to `package.json`
 "html-webpack-harddisk-plugin": "0.2.0"
 ...
 }
-``
+```
 
 Create `template.index.html` under `webpack` folder
 
