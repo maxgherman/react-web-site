@@ -149,10 +149,6 @@ const config: webpack.Configuration = {
                         const packageName =
                             module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
 
-                        if (packageName === 'react-hot-loader') {
-                            return undefined;   // exclude react-hot-loader from bundling
-                        }
-
                         return `npm.${packageName.replace('@', '')}`;
                     }
                 }
