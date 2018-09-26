@@ -1,23 +1,4 @@
-const Environments = (env) => {
-    Values = {
-        Prod: 'production',
-        Development: 'development'
-    };
-
-    return {
-        get isProduction() {
-            return env === Values.Prod;
-        },
-
-        get isDevelopment() {
-            return env === Values.Development;
-        },
-
-        get current() {
-            return env;
-        }
-    };
-}
+const Environments = require('./webpack/environments');
 
 const developmentPlugins = [
     ["babel-plugin-webpack-alias", {

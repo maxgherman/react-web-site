@@ -5,28 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const Environments: (string) => IEnvironments = require('./webpack/environments');
 const aliases = require('./webpack/module-aliases').getAliases;
 
-const Environments = (() => {
-    enum Values {
-        Prod = 'production',
-        Analysis = 'analyse'
-    }
-
-    return {
-        get isProduction(): boolean {
-            return process.env.NODE_ENV === Values.Prod;
-        },
-
-        get isAnalysis(): boolean {
-            return process.env.NODE_ENV === Values.Analysis;
-        },
-
-        get current(): string {
-            return process.env.NODE_ENV;
-        }
-    };
-})();
+interface IEnvironments {
+    isProduction: boolean
+    isAnalysis(): boolean
+    current(): string
+}
 
 const Parts = {
     production: {
@@ -59,7 +45,9 @@ const Parts = {
     }
 };
 
-console.log(`Running webpack config for environment: ${Environments.current}`);
+const environments = Environments(process.env.NODE_ENV);
+
+console.log(`Running webpack config for environment: ${environments.current}`);
 
 const Paths = {
     indexJs: path.join(__dirname, 'src', 'index'),
@@ -75,7 +63,7 @@ const config: webpack.Configuration = {
         main: Paths.indexJs
     },
 
-    ...Environments.isAnalysis && { devtool: Parts.analysis.devtool },
+    ...environments.isAnalysis && { devtool: Parts.analysis.devtool },
 
     output: {
         path: Paths.destination,
@@ -128,7 +116,8 @@ const config: webpack.Configuration = {
         new CleanWebpackPlugin(
             [Paths.destination],
             { verbose: true })
-    ].concat(Environments.isAnalysis ? Parts.analysis.plugins : []),
+    ]
+    .concat(environments.isAnalysis ? Parts.analysis.plugins : []),
 
     node: {
         fs: 'empty'
@@ -136,7 +125,7 @@ const config: webpack.Configuration = {
 
     optimization: {
 
-        ...Environments.isProduction ? Parts.production.optimization : Parts.analysis.optimization,
+        ...environments.isProduction ? Parts.production.optimization : Parts.analysis.optimization,
 
         removeAvailableModules: true,
 
