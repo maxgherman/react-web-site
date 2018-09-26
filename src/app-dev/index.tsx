@@ -1,4 +1,4 @@
-import { load, getPresence } from './polyfills/load';
+import { load, getPresence } from '../polyfills/load';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,7 +10,7 @@ load()
     const polyfillPresence = getPresence();
 
     const App = polyfillPresence.length <= 0 ?
-        require('./app-dev').default :
+        require('./app').default :
         () => (
             <div>
                 Missing polyfills for:<br/>

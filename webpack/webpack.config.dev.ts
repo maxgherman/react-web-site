@@ -15,7 +15,7 @@ interface IConfig extends webpack.Configuration {
 console.log(`Running webpack config for environment: ${process.env.NODE_ENV}`);
 
 const Paths = {
-    indexJs: path.join(__dirname, 'src', 'index-dev'),
+    indexJs: path.join(__dirname, 'src', 'app-dev', 'index'),
     source: path.join(__dirname, 'src'),
     destination: path.resolve(__dirname, 'www', 'dist'),
     contentBase: path.join(__dirname, 'www')
