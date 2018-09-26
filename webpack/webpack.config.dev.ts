@@ -46,8 +46,11 @@ const config: IConfig = {
     module: {
         rules: [{
             // Include ts, tsx, and js files.
-            test: /\.(tsx?)|(js?)$/,
-            exclude: /node_modules/,
+            test: /\.(tsx?)|(jsx?)$/,
+            include: [
+                path.resolve(__dirname, 'src'),
+                path.resolve(__dirname, 'node_modules/ky')
+            ],
             loader: 'babel-loader',
             options: {
                 cacheDirectory: true    // react-hot-loader needs this
