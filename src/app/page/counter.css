@@ -1,3 +1,5 @@
-.counter .header {
-    color: green;
+.counter {
+    & .header {
+        color: green;
+    }
 }
