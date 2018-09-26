@@ -14,7 +14,6 @@ Add dependencies to `package.json`
     "mini-css-extract-plugin": "0.4.3",
     "postcss-cssnext": "3.1.0",
     "postcss-loader": "3.0.0",
-    "postcss-cssnext": "3.1.0",
     "style-loader": "0.23.0",
 ...
 }
