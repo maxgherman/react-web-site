@@ -32,6 +32,8 @@ tsc --init --declaration --allowSyntheticDefaultImports --target esnext --outDir
 
 ## Create your `.babelrc`
 
+> `.babelrc` does not transform files from `node_modules`, use babel.config.js instead: [reference](https://babeljs.io/docs/en/config-files)
+
 Then copy the content from below:
 
 ```json
