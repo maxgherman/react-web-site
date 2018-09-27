@@ -3,6 +3,7 @@ import webpack from 'webpack';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const aliases = require('./webpack/module-aliases').getAliases;
 
 interface IConfig extends webpack.Configuration {
@@ -62,6 +63,8 @@ const config: IConfig = {
     },
 
     plugins: [
+        new DashboardPlugin(),
+
         new webpack.EnvironmentPlugin(['NODE_ENV']),
         new webpack.NamedModulesPlugin(),
 
