@@ -13,11 +13,7 @@ module.exports = function(ctx) {
     const environments = Environments(ctx.env);
 
     return {
-        plugins: [
-            cssnext({
-                browsers: 'last 2 version, IE 11, not IE 10'
-            })
-        ]
+        plugins: [ cssnext ]
         .concat(environments.isProduction ? prodPlugins : [])
     };
 }

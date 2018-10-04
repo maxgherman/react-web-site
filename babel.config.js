@@ -28,7 +28,7 @@ module.exports = api => {
                 "modules": false,
                 "targets": {
                     "ie": "11"
-                  }
+                }
             }],
             "@babel/typescript",
             "@babel/preset-react"
