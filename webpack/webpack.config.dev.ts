@@ -15,6 +15,8 @@ interface IConfig extends webpack.Configuration {
 
 console.log(`Running webpack config for environment: ${process.env.NODE_ENV}`);
 
+const useDashboard = (process.env.BOARD || '').toUpperCase() === 'TRUE';
+
 const Paths = {
     indexJs: path.join(__dirname, 'src', 'app-dev', 'index'),
     source: path.join(__dirname, 'src'),
@@ -62,8 +64,9 @@ const config: IConfig = {
         }],
     },
 
-    plugins: [
-        new DashboardPlugin(),
+    plugins:
+    (useDashboard ? [new DashboardPlugin()] : [])
+    .concat([
 
         new webpack.EnvironmentPlugin(['NODE_ENV']),
         new webpack.NamedModulesPlugin(),
@@ -78,7 +81,7 @@ const config: IConfig = {
         new CleanWebpackPlugin(
             [Paths.destination],
             { verbose: true })
-    ],
+    ]),
 
     node: {
         fs: 'empty'
