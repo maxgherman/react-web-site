@@ -96,3 +96,19 @@ export class Page extends React.Component<{}, IPageState> {
     }
 }
 ```
+
+Alternative solution: use React lazy and suspense
+
+```ts
+import React, { lazy, Suspense } from 'react';
+
+const Counter = lazy(() => import('./counter'));
+
+const LoadableComponent = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Counter />
+        </Suspense>
+    );
+};
+```

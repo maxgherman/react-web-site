@@ -1,19 +1,22 @@
 import './page.css';
 
-import React from 'react';
-import Loadable from 'react-loadable';
+// @ts-ignore
+import React, { lazy, Suspense } from 'react';
 
 interface IPageState {
     test: number
     view?: JSX.Element
 }
 
-const LoadableComponent = Loadable({
-    loader: () => import('./counter'),
-    loading() {
-        return <div>Loading...</div>;
-    }
-});
+const Counter = lazy(() => import('./counter'));
+
+const LoadableComponent = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Counter />
+        </Suspense>
+    );
+};
 
 export class Page extends React.Component<{}, IPageState> {
 
