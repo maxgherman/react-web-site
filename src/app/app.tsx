@@ -14,7 +14,8 @@ export interface IAppProps {
     title?: string
 }
 
-export const App = (props: IAppProps) => {
+// @ts-ignore
+export const App = React.memo((props: IAppProps) => {
 
     const text = 'Test React App !';
 
@@ -32,6 +33,6 @@ export const App = (props: IAppProps) => {
             </div>
         </>
     );
-};
+});
 
 export default App;
