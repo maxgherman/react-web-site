@@ -90,7 +90,7 @@ class Counter extends React.Component<{}, ICounterState> {
 
     private loadData = async () => {
         const result = await ky.get('https://jsonplaceholder.typicode.com/photos')
-            .json() as IDataPayload[];
+            .json() as unknown as IDataPayload[];
 
         this.setState(() => ({
             data: result.slice(0, 10)
