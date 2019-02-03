@@ -1,4 +1,4 @@
-const cssnext = require("postcss-cssnext");
+const postcssPresetEnv = require('postcss-preset-env');
 const cssnano = require('cssnano');
 const Environments = require('./webpack/environments');
 
@@ -13,7 +13,13 @@ module.exports = function(ctx) {
     const environments = Environments(ctx.env);
 
     return {
-        plugins: [ cssnext ]
+        plugins: [
+            postcssPresetEnv({
+                features: {
+                    'nesting-rules': true,
+                    'color-mod-function': { unresolved: 'warn' }
+                }
+        })]
         .concat(environments.isProduction ? prodPlugins : [])
     };
 }
