@@ -18,8 +18,7 @@ module.exports = {
     },
 
     testMatch: [
-        "**/__tests__/**/*.(t|j)s?(x)",
-        "**/?(*.)+(spec|test).(t|j)s?(x)"
+        "<rootDir>/src/**/?(*.)+(spec|test).(t|j)s?(x)"
     ],
 
     globals: {

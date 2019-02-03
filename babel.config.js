@@ -23,6 +23,11 @@ module.exports = api => {
     api.cache(true);
     
     return {
+        ignore: [
+            '**/*.test.ts',
+            '**/*.test.tsx'
+        ],
+
         presets: [
             ["@babel/env", {
                 "modules": false,
@@ -45,6 +50,6 @@ module.exports = api => {
             }],
         ]
         .concat(environments.isDevelopment ? developmentPlugins : [])
-        .concat(environments.isProduction ? productionPlugins : [])
+        .concat(environments.isProduction ? productionPlugins : []),
     }
   }
