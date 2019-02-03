@@ -1,4 +1,4 @@
-require('es6-promise').polyfill();
+require('core-js/fn/promise');
 
 export const getPresence = () => {
     const result = [];
