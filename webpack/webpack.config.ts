@@ -5,14 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const Environments: (string) => IEnvironments = require('./webpack/environments');
-const aliases = require('./webpack/module-aliases').getAliases;
-
-interface IEnvironments {
-    isProduction: boolean
-    isAnalysis(): boolean
-    current(): string
-}
 
 const Parts = {
     production: {
@@ -45,9 +37,9 @@ const Parts = {
     }
 };
 
-const environments = Environments(process.env.NODE_ENV);
+const isAnalysis = (process.env.ANALYSE || '').toUpperCase() === 'TRUE';
 
-console.log(`Running webpack config for environment: ${environments.current}`);
+console.log(`Running webpack config for environment: ${process.env.NODE_ENV}`);
 
 const Paths = {
     indexJs: path.join(__dirname, 'src', 'index'),
@@ -63,7 +55,7 @@ const config: webpack.Configuration = {
         main: Paths.indexJs
     },
 
-    ...environments.isAnalysis && { devtool: Parts.analysis.devtool },
+    ...isAnalysis && { devtool: Parts.analysis.devtool },
 
     output: {
         path: Paths.destination,
@@ -72,8 +64,7 @@ const config: webpack.Configuration = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
-        alias: aliases(Paths.source)
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
 
     module: {
@@ -117,7 +108,7 @@ const config: webpack.Configuration = {
             [Paths.destination],
             { verbose: true })
     ]
-    .concat(environments.isAnalysis ? Parts.analysis.plugins : []),
+    .concat(isAnalysis ? Parts.analysis.plugins : []),
 
     node: {
         fs: 'empty'
@@ -125,7 +116,7 @@ const config: webpack.Configuration = {
 
     optimization: {
 
-        ...environments.isProduction ? Parts.production.optimization : Parts.analysis.optimization,
+        ...isAnalysis ? Parts.analysis.optimization : Parts.production.optimization,
 
         removeAvailableModules: true,
 

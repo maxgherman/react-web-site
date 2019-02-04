@@ -4,7 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const aliases = require('./webpack/module-aliases').getAliases;
 
 interface IConfig extends webpack.Configuration {
     devServer: {
@@ -42,8 +41,7 @@ const config: IConfig = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
-        alias: aliases(Paths.source)
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
 
     module: {

@@ -2,8 +2,7 @@
 
 const Values = Object.freeze({
     Prod: 'production',
-    Development: 'development',
-    Analysis: 'analyse'
+    Development: 'development'
 });
 
 module.exports = (env) => {
@@ -14,10 +13,6 @@ module.exports = (env) => {
 
         get isDevelopment() {
             return env === Values.Development;
-        },
-
-        get isAnalysis() {
-            return env === Values.Analysis;
         },
 
         get current() {

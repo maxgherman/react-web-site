@@ -1,24 +1,5 @@
-const Environments = require('./webpack/environments');
-
-const developmentPlugins = [
-    ["babel-plugin-webpack-alias", {
-        "config": "webpack.config.dev.js",
-        "findConfig": true
-    }],
-    "react-hot-loader/babel"
-];
-
-const productionPlugins = [
-    ["babel-plugin-webpack-alias", {
-        "config": "webpack.config.js",
-        "findConfig": true
-    }]
-];
-
 
 module.exports = api => {
-    
-    const environments = Environments(api.env());
     
     api.cache(true);
     
@@ -43,13 +24,19 @@ module.exports = api => {
             "@babel/plugin-proposal-class-properties",
             "@babel/plugin-proposal-object-rest-spread",
             "@babel/plugin-syntax-dynamic-import",
+
+            [require.resolve('babel-plugin-module-resolver'), {
+                root: ["."],
+                alias: {
+                    "@app": "./src/app",
+                    "@utils": "./src/utils"
+                }
+            }],
             
             ["@babel/plugin-transform-runtime", {
                 "corejs": false,
                 "regenerator": true
             }],
         ]
-        .concat(environments.isDevelopment ? developmentPlugins : [])
-        .concat(environments.isProduction ? productionPlugins : []),
     }
   }
